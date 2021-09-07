@@ -1,7 +1,7 @@
 #!/bin/bash
 
 phish_infra_dir=/opt/phish_infra
-dockerhub_username="r_team_417"
+dockerhub_username="rteam417"
 github_repo_url="https://github.com/shlok-lucideus/phish_infra"
 packages="openssl python3-certbot-nginx python3-pip unzip tmux git docker docker.io docker-compose certbot net-tools iputils-ping iproute2 curl wget nano"
 DEBIAN_FRONTEND=noninteractive apt-get -y update && apt-get -y dist-upgrade && apt-get install -y $packages && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
