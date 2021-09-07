@@ -5,6 +5,7 @@ RUN apt-get -y update && apt-get -y dist-upgrade && \
 	cd /root && go get github.com/gophish/gophish && \
 	cd go/src/github.com/gophish/gophish && \
 	sed -i 's/rid/id/g' models/campaign.go && sed -i 's/gophish//g' models/smtp_test.go && \
+	sed -i 's/const\ ServerName\ =\ "gophish"/const\ ServerName\ =\ ""/g' models/config.go && \
 	go build && \
 	apt-get -y autoremove && apt-get -y clean && rm -rf /var/lib/apt/lists/* && \
 	ln -s /root/go/src/github.com/gophish/gophish /opt/gophish
