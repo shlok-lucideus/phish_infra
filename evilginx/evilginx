@@ -1,0 +1,1 @@
+docker run --rm --init --hostname=evilginx --name=evilginx -it -p 4444:443/tcp -e VIRTUAL_HOST=hosts_here -e VIRTUAL_PROTO=https -e VIRTUAL_PORT=443 -v $(pwd)/config:/root/.evilginx/ -v $(pwd)/phishlets:/opt/evilginx/phishlets evilginx

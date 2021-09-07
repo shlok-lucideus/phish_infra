@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+
+  nginx-proxy:
+            image: jwilder/nginx-proxy:latest
+            ports:
+              - "80:80"
+              - "443:443"
+            volumes:
+              - /var/run/docker.sock:/tmp/docker.sock:ro
+              - ./certs/:/etc/nginx/certs
+
+  gophish:
+            image: gophish
+            ports:
+              - "127.0.0.1:3333:3333"
+              - "127.0.0.1:8080:80"
+            hostname: 'gophish'
+            container_name: gophish
+            init: true
+            volumes:
+              - ./gophish/gophish.db:/opt/gophish/gophish.db
+            environment:
+                - VIRTUAL_HOST=hosts_here
+                - VIRTUAL_PROTO=https
+                - VIRTUAL_PORT=80
