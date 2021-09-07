@@ -61,7 +61,6 @@ evilginx() {
     sed -i "s/hosts_here/$tracker/g" $phish_infra_dir/docker-compose.yml
     sed -i "s/hosts_here/$hosts_here/g" $phish_infra_dir/evilginx/evilginx
     compose_up
-    chmod +x /usr/local/bin/evilginx
     tmux new-session -d -s evilginx && tmux send-keys -t evilginx "cd $phish_infra_dir/evilginx ./evilginx" Enter
 }
 
